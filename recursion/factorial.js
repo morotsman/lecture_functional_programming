@@ -1,6 +1,0 @@
-
-const factorial = number => {
-	//assignment
-}
-
- 

@@ -4,8 +4,13 @@ const reverse = list => {
 	return reverse(list.slice(1)).concat(list[0]);
 }
 
-const min = list => {
+const min = _list => {
+	const go = (list,acc) => {
+		if(list.length === 1) return list[0]>acc?acc:list[0];
+		return go(list.slice(1), list[0]>acc?acc:list[0]);		
+	}
 	
+	return go(_list,_list[0]);
 }
 
 const max = list => {

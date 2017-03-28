@@ -33,6 +33,14 @@ describe('list', function () {
 		expect(min([1])).toEqual(1);
 	});
 	
+	it("min of [1,2] should be 1", function() {
+		expect(min([1,2])).toEqual(1);
+	});	
+	
+	it("min of [1,5,2,-5,6] should be -5", function() {
+		expect(min([1,5,2,-5,6])).toEqual(-5);
+	});	
+	
 	
 	
 	//min
