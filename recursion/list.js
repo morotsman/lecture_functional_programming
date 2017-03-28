@@ -4,11 +4,11 @@ const reverse = list => {
 	return reverse(list.slice(1)).concat(list[0]);
 }
 
-const max = list => {
+const min = list => {
 	
 }
 
-const min = list => {
+const max = list => {
 	
 }
 
