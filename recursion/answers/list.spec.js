@@ -108,7 +108,11 @@ describe('list', function () {
 	
 	it("reduce with product", function() {
 		expect(reduce([1,2,3], times, 1)).toEqual(6);
-	});		
+	});	
+
+	it("reduce with reverse", function() {		
+		expect(reduce([1,2,3], (acc,v) => [v].concat(acc), [])).toEqual([3,2,1]);
+	});	
 	
 	//times 2
 	//length of strings
