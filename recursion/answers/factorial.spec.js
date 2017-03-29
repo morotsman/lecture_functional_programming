@@ -23,4 +23,11 @@ describe('factorial', function () {
     });		
 	
 	
+	/*
+	it("factorial(40000) should be 40000", function(){
+       expect(factorial(40000)).toEqual(Infinity);
+    });
+	*/
+		
+	
 });

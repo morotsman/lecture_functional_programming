@@ -1,31 +1,56 @@
 
+const head = list => list[0];
+
+const tail = list => list.splice(1);
+
 const reverse = list => {
 	if(list.length === 0) return [];
-	return reverse(list.slice(1)).concat(list[0]);
+	return reverse(tail(list)).concat(head(list));
 }
 
-const min = _list => {
+const min = list => {
 	const go = (list,acc) => {
-		if(list.length === 1) return list[0]>acc?acc:list[0];
-		return go(list.slice(1), list[0]>acc?acc:list[0]);		
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list)>acc?acc:head(list));		
 	}
 	
-	return go(_list,_list[0]);
+	return go(list,list[0]);
 }
 
 const max = list => {
+	const go = (list,acc) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list)<acc?acc:head(list));		
+	}
 	
+	return go(list,list[0]);	
 }
 
 const sum = list => {
+	const go = (list,acc) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list) + acc);		
+	}
 	
+	return go(list,0);
 }
 
 const product = list => {
+	const go = (list,acc) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list) * acc);		
+	}
 	
+	return go(list,1);	
 }
 
-const reduce = (list, fun) => {
+const reduce = (list, fun, initial=list[0]) => {
+	const go = (list,acc,initial) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), fun(acc, head(list)) );		
+	}
+	
+	return go(list,initial);
 	
 }
 
