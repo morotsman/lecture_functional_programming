@@ -51,5 +51,6 @@ describe('fibonacci', function () {
 	it("fibonacci(100) should be 218922995834555200000", function(){
         expect(fibonacci(100)).toEqual(218922995834555200000);
     });
-	*/	
+	*/
+	
 });
