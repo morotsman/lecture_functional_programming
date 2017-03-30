@@ -87,7 +87,7 @@ describe('list', function () {
 		
 	});		
 	
-	//reduce
+	//reduce reduce([1,2,3], minimum) => 1
 	
 	const maximum = (a,b) => a>b?a:b;
 	const minimum = (a,b) => a<b?a:b;
@@ -114,13 +114,118 @@ describe('list', function () {
 		expect(reduce([1,2,3], (acc,v) => [v].concat(acc), [])).toEqual([3,2,1]);
 	});	
 	
-	//times 2
-	//length of strings
-	//map
 	
-	//all evens
-	//all that starts with A
+	// [1,2,3] => [2,4,6]
+	
+	it("times2 should multiply each entry in the array with 2", function() {
+		expect(times2([])).toEqual([]);
+	});
+	
+	it("times2 should multiply each entry in the array with 2", function() {
+		expect(times2([1])).toEqual([2]);
+	});
+
+	it("times2 should multiply each entry in the array with 2", function() {
+		expect(times2([1,2,3])).toEqual([2,4,6]);
+	});		
+	
+	// ['a', 'abc', 'ab'] => [1,3,2]
+	
+	it("lengthOfStrings should return the length of strings", function() {
+		expect(lengthOfStrings([])).toEqual([]);
+	});
+	
+	it("lengthOfStrings should return the length of strings", function() {
+		expect(lengthOfStrings(["a"])).toEqual([1]);
+	});
+
+	it("lengthOfStrings should return the length of strings", function() {
+		expect(lengthOfStrings(["a", "abc", "ab"])).toEqual([1,3,2]);
+	});		
+
+
+	it("map should apply a function on all elements in the array", function() {
+		expect(map([], v => v*2)).toEqual([]);
+	});
+	
+	it("map should apply a function on all elements in the array", function() {
+		expect(map([1], v => v*2)).toEqual([2]);
+	});
+	
+	it("map should apply a function on all elements in the array", function() {
+		expect(map([1,2,3], v => v*2)).toEqual([2,4,6]);
+	});
+	
+	it("map should apply a function on all elements in the array", function() {
+		expect(map([1,2,3], v => v*2)).toEqual([2,4,6]);
+	});
+	
+
+	it("map should return the length of strings", function() {
+		expect(map(['a','abc','ab'], v => v.length)).toEqual([1,3,2]);
+	});		
+	
+	// allEvens([1,2,3,4]) => [2,4]
+	
+	it("allEvens should give back all even values", function() {
+		expect(allEvens([])).toEqual([]);
+	});
+	
+	it("allEvens should give back all even values", function() {
+		expect(allEvens([1])).toEqual([]);
+	});
+	
+	it("allEvens should give back all even values", function() {
+		expect(allEvens([1,2])).toEqual([2]);
+	});	
+	
+	it("allEvens should give back all even values", function() {
+		expect(allEvens([1,2,3,4])).toEqual([2,4]);
+	});	
+	
+	// allThatStartsWithA(["abc", "Ada", "Beta"]) => ["Ada"]
+	
+	
+	it("allThatStartsWithA should give back all values that starts with A", function() {
+		expect(allThatStartsWithA([])).toEqual([]);
+	});
+	
+	it("allThatStartsWithA should give back all values that starts with A", function() {
+		expect(allThatStartsWithA(["abc"])).toEqual([]);
+	});
+	
+	it("allThatStartsWithA should give back all values that starts with A", function() {
+		expect(allThatStartsWithA(["abc", "ABC"])).toEqual(["ABC"]);
+	});	
+	
+	it("allThatStartsWithA should give back all values that starts with A", function() {
+		expect(allThatStartsWithA(["abc", "Ada", "Beta", "Apa"])).toEqual(["Ada", "Apa"]);
+	});	
+	
 	//filter
+	
+	const startsWithA = v => v.startsWith("A");
+	const isEven = v => v%2 === 0;
+	
+	it("should give back all values where the given predicate returns true", function() {
+		expect(filter([1,2,3,4,5,6], isEven)).toEqual([2,4,6]);
+	});
+	
+	it("filter should give back all values where the given predicate returns true", function() {
+		expect(filter([], startsWithA)).toEqual([]);
+	});
+	
+	it("filter should give back all values where the given predicate returns true", function() {
+		expect(filter(["abc"], startsWithA)).toEqual([]);
+	});
+	
+	it("filter should give back all values where the given predicate returns true", function() {
+		expect(filter(["abc", "ABC"], startsWithA)).toEqual(["ABC"]);
+	});	
+	
+	it("filter should give back all values where the given predicate returns true", function() {
+		expect(filter(["abc","Ada","Beta","Apa"], startsWithA)).toEqual(["Ada", "Apa"]);
+	});	
 	
 	
 	

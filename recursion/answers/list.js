@@ -55,27 +55,36 @@ const reduce = (list, fun, initial=list[0]) => {
 }
 
 const times2 = list => {
-	
+	if(list.length === 0) return list;
+	return [head(list)*2].concat(times2(tail(list)));
 }
 
 const lengthOfStrings = list => {
-	
+	if(list.length === 0) return list;
+	return [head(list).length].concat(lengthOfStrings(tail(list)))
 }
 
 const map = (list, fun) => {
-	
+	if(list.length === 0) return list;
+	return [fun(head(list))].concat(map(tail(list), fun));
 } 
 
-const evens = list => {
-	
+const allEvens = list => {
+	if(list.length === 0) return list;
+	const val = head(list)%2?[]:[head(list)];
+	return val.concat(allEvens(tail(list)))
 }
 
-const startsWithA = list => {
-	
+const allThatStartsWithA = list => {
+	if(list.length === 0) return list;
+	const val = head(list).startsWith('A')?[head(list)]:[];
+	return val.concat(allThatStartsWithA(tail(list)));
 }
 
 const filter = (list,fun) => {
-	
+	if(list.length === 0) return list;
+	const val = fun(head(list))?[head(list)]:[];
+	return val.concat(filter(tail(list), fun));	
 }
 
  
