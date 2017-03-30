@@ -89,10 +89,7 @@ describe('list', function () {
 	
 	//reduce reduce([1,2,3], minimum) => 1
 	
-	const maximum = (a,b) => a>b?a:b;
-	const minimum = (a,b) => a<b?a:b;
-	const add = (a,b) => a + b;
-	const times = (a,b) => a * b;
+
 	
 	it("reduce with min", function() {
 		expect(reduce([1,2,3], minimum)).toEqual(1);
@@ -204,8 +201,7 @@ describe('list', function () {
 	
 	//filter
 	
-	const startsWithA = v => v.startsWith("A");
-	const isEven = v => v%2 === 0;
+
 	
 	it("should give back all values where the given predicate returns true", function() {
 		expect(filter([1,2,3,4,5,6], isEven)).toEqual([2,4,6]);
@@ -226,9 +222,6 @@ describe('list', function () {
 	it("filter should give back all values where the given predicate returns true", function() {
 		expect(filter(["abc","Ada","Beta","Apa"], startsWithA)).toEqual(["Ada", "Apa"]);
 	});	
-	
-	
-	const lengthOfString = s => s.length;  
 	
 	it("sum of all elements that startsWith A (use tha reduce, filter and map functions found in array)", function() {
 		expect(["abc","Ada","Beta","ApaApa"].filter(startsWithA).map(lengthOfString).reduce(add)).toEqual(9);

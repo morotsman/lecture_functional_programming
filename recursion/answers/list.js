@@ -3,6 +3,20 @@ const head = list => list[0];
 
 const tail = list => list.splice(1);
 
+const maximum = (a,b) => a>b?a:b;
+
+const minimum = (a,b) => a<b?a:b;
+	
+const add = (a,b) => a + b;
+
+const times = (a,b) => a * b;
+
+const startsWithA = v => v.startsWith("A");
+
+const isEven = v => v%2 === 0;
+
+const lengthOfString = s => s.length;  
+
 const reverse = list => {
 	if(list.length === 0) return [];
 	return reverse(tail(list)).concat(head(list));
@@ -11,7 +25,7 @@ const reverse = list => {
 const sum = list => {
 	const go = (list,acc) => {
 		if(list.length === 0) return acc;
-		return go(tail(list), head(list) + acc);		
+		return go(tail(list), add(head(list),acc));		
 	}
 	
 	return go(list,0);
@@ -20,7 +34,7 @@ const sum = list => {
 const product = list => {
 	const go = (list,acc) => {
 		if(list.length === 0) return acc;
-		return go(tail(list), head(list) * acc);		
+		return go(tail(list), times(head(list),acc));		
 	}
 	
 	return go(list,1);	
@@ -29,7 +43,7 @@ const product = list => {
 const min = list => {
 	const go = (list,acc) => {
 		if(list.length === 0) return acc;
-		return go(tail(list), head(list)>acc?acc:head(list));		
+		return go(tail(list), minimum(head(list),acc));		
 	}
 	
 	return go(list,list[0]);
@@ -38,7 +52,7 @@ const min = list => {
 const max = list => {
 	const go = (list,acc) => {
 		if(list.length === 0) return acc;
-		return go(tail(list), head(list)<acc?acc:head(list));		
+		return go(tail(list), maximum(head(list),acc));		
 	}
 	
 	return go(list,list[0]);	
@@ -71,7 +85,7 @@ const map = (list, fun) => {
 
 const allEvens = list => {
 	if(list.length === 0) return list;
-	const val = head(list)%2?[]:[head(list)];
+	const val = isEven(head(list))?[head(list)]:[];
 	return val.concat(allEvens(tail(list)))
 }
 
