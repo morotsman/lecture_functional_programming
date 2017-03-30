@@ -8,24 +8,6 @@ const reverse = list => {
 	return reverse(tail(list)).concat(head(list));
 }
 
-const min = list => {
-	const go = (list,acc) => {
-		if(list.length === 0) return acc;
-		return go(tail(list), head(list)>acc?acc:head(list));		
-	}
-	
-	return go(list,list[0]);
-}
-
-const max = list => {
-	const go = (list,acc) => {
-		if(list.length === 0) return acc;
-		return go(tail(list), head(list)<acc?acc:head(list));		
-	}
-	
-	return go(list,list[0]);	
-}
-
 const sum = list => {
 	const go = (list,acc) => {
 		if(list.length === 0) return acc;
@@ -42,6 +24,24 @@ const product = list => {
 	}
 	
 	return go(list,1);	
+}
+
+const min = list => {
+	const go = (list,acc) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list)>acc?acc:head(list));		
+	}
+	
+	return go(list,list[0]);
+}
+
+const max = list => {
+	const go = (list,acc) => {
+		if(list.length === 0) return acc;
+		return go(tail(list), head(list)<acc?acc:head(list));		
+	}
+	
+	return go(list,list[0]);	
 }
 
 const reduce = (list, fun, initial=list[0]) => {
