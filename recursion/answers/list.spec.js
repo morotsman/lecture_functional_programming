@@ -228,5 +228,14 @@ describe('list', function () {
 	});	
 	
 	
+	const lengthOfString = s => s.length;  
+	
+	
+	//sum of all elements that startsWith A (use tha reduce, filter and map functions found in array)
+	it("", function() {
+		expect(["abc","Ada","Beta","ApaApa"].filter(startsWithA).map(lengthOfString).reduce(add)).toEqual(9);
+	});			
+	
+	
 	
 });
