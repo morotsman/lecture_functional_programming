@@ -13,7 +13,7 @@ const times = (a,b) => a * b;
 
 const startsWithA = v => v.startsWith("A");
 
-const isEven = v => v%2 === 0;
+const isEven = v => v%2 === 0
 
 const lengthOfString = s => s.length;  
 

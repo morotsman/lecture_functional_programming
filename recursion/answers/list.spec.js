@@ -225,6 +225,20 @@ describe('list', function () {
 	
 	it("sum of all elements that startsWith A (use tha reduce, filter and map functions found in array)", function() {
 		expect(["abc","Ada","Beta","ApaApa"].filter(startsWithA).map(lengthOfString).reduce(add)).toEqual(9);
+			
+				
+		const expression = L.compose(L.take(3),L.map(L.times(2)), L.filter(isEven));
+		const expression2 = L.compose(L.take(3),L.map(L.times(2)), L.filter(isEven));
+		
+		for (let value of expression([1,2,3,4,5,6,7,8,9,10])) {
+			console.log("result1: " + value);
+		}
+		console.log("******************");
+		
+		for (let value of expression2([1,2,3,4,5,6,7,8,9,10])) {
+			console.log("result2: " + value);
+		}
+		
 	});			
 	
 	
