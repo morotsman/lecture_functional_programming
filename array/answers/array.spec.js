@@ -327,63 +327,51 @@ describe('array', function () {
 	/**************Assignments**********************/
 	
 	it("sum of [] should be 0", function(){
-		//use reduce
-		const actual = [].reduce((acc,v) => acc + v, 0);
-		expect(actual).toEqual(0);
+		expect(sum([])).toEqual(0);
 	});		
 	
 	it("sum of [1,2,3,4] should be 10", function(){
-		//use reduce
-		const actual = [1,2,3,4].reduce((acc,v) => acc + v, 0);
-		expect(actual).toEqual(10);
+		expect(sum([1,2,3,4])).toEqual(10);
 	});	
 	
 	it("length of [] should be 0", function(){
-		//use reduce
-		const actual = [].reduce((acc,v) => acc + 1, 0);
-		expect(actual).toEqual(0);
+		expect(length([])).toEqual(0);
 	});		
 	
 	it("length of [1,2,3,4] should be 4", function(){
-		//use reduce
-		const actual = [1,2,3,4].reduce((acc,v) => acc + 1, 0);
-		expect(actual).toEqual(4);
+		expect(length([1,2,3,4])).toEqual(4);
 	});	
 	
 	it("sum of all even numbers [1,2,3,4] should be 6", function(){
-		//use reduce
-		const actual = [1,2,3,4].filter(v => v%2 === 0).reduce((acc,v) => acc + v, 0);
-		expect(actual).toEqual(6);
+		expect(sumAllEvenNumbers([1,2,3,4])).toEqual(6);
 	});	
 
 	it("reverse([]) should be '[]' and the original array should not be affected", function(){
-		const actual = [].filter(v => v%2 === 0).reduce((acc,v) => acc.concat(v), []);
-		expect(actual).toEqual([]);
+		expect(reverse([])).toEqual([]);
 	});		
 	
 	it("reverse([1,2,3,4]) should be '[4,3,2,1]' and the original array should not be affected", function(){
-		const actual = [1,2,3,4].filter(v => v%2 === 0).reduce((acc,v) => acc.concat(v), []);
-		expect(actual).toEqual([4,3,2,1]);
+		expect(reverse([1,2,3,4])).toEqual([4,3,2,1]);
 	});	
 	
-	it("longest string ['hej', 'hejsan', 'svejsan'] should be 'svejsan'", function(){
-
+	it("longest string ['hej', 'hejsan', 'abcdefghijklmn', 'svejsan'] should be 'svejsan'", function(){
+		expect(longestString(['hej', 'hejsan', ,'abcdefghijklmn','svejsan'])).toEqual('abcdefghijklmn');
 	});	
 	
 	it("groupBy([], v => v.charAt(0)) should be '{}' and the original array should not be affected", function(){
-
+		expect(groupBy([], v=> v.charAt(0))).toEqual({});
 	});			
 	
 	it("groupBy(['apa','beta','ada','ceasar'], v => v.charAt(0)) should be '{a: ['apa', 'ada'], b: ['beta'], c:['ceasar']}' and the original array should not be affected", function(){
-
+		expect(groupBy(['apa','beta','ada','ceasar'], v=> v.charAt(0))).toEqual({a: ['ada', 'apa'], b: ['beta'], c:['ceasar']});
 	});		
 
-	it("sort('Sadder') should be 'adders'", function(){
-
+	it("sortString('sadder') should be 'adders'", function(){
+		expect(sortString('sadder')).toEqual('adders');
 	});	
 	
-	it("sort('Dreads') should be 'adders'", function(){
-
+	it("sort('dreads') should be 'adders'", function(){
+		expect(sortString('dreads')).toEqual('adders');
 	});	
 	
 	it("longest words in anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive']) should be ['Creative', 'Reactive']", function(){
