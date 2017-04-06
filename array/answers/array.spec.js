@@ -1,4 +1,37 @@
 describe('array', function () {
+	
+	
+	/********************Motivation************************************/
+	
+	const joinImperative = (list,separator = ',') => {
+		let result = '';
+		for( let i = 0; i < list.length; i++ ) {
+			if(i === (list.length - 1)) {
+				result = result + list[i];
+			} else {
+				result = result + list[i] + separator;
+			}
+			
+		}
+		return result;
+	}
+	
+	const joinFunctional = (list,seperator) => list.join(seperator) 
+	
+	
+	it("test joinFunctional", function(){
+		expect(joinFunctional([])).toEqual("");
+		expect(joinFunctional([1])).toEqual("1");
+        expect(joinFunctional([1,2,3])).toEqual("1,2,3");
+		expect(joinFunctional([1,2,3], ";")).toEqual("1;2;3");
+    });	
+	
+	it("test joinImperative", function(){
+		expect(joinImperative([])).toEqual("");
+		expect(joinImperative([1])).toEqual("1");
+        expect(joinImperative([1,2,3])).toEqual("1,2,3");
+		expect(joinImperative([1,2,3], ";")).toEqual("1;2;3");
+    });		
 
 	/*********************Use*****************************************/
 
@@ -112,24 +145,6 @@ describe('array', function () {
 		const actual = list1.join();
 		
         expect(actual).toEqual("1,2,3");
-		expect(list1).toEqual([1,2,3]);	
-    });	
-	
-	it("[1].join() => 1", function(){
-		const list1 = [1];
-		
-		const actual = list1.join();
-		
-        expect(actual).toEqual("1");
-		expect(list1).toEqual([1]);	
-    });		
-	
-	it("[1,2,3].join('') => 123", function(){
-		const list1 = [1,2,3];
-		
-		const actual = list1.join('');
-		
-        expect(actual).toEqual("123");
 		expect(list1).toEqual([1,2,3]);	
     });	
 		
@@ -374,8 +389,10 @@ describe('array', function () {
 		expect(sortString('dreads')).toEqual('adders');
 	});	
 	
-	it("longest words in anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive']) should be ['Creative', 'Reactive']", function(){
-
+	it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be ['Creative', 'Reactive']", function(){
+		const anagrams = objectValues(groupBy(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'], v => sortString(v))).filter(v => v.length > 1);
+		const expected = [['Dreads', 'Sadder'], ['Reactive', 'Creative']];
+		expect(anagrams).toEqual(expected);
 	});		
 	
 });

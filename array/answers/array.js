@@ -26,6 +26,8 @@ const sortString = s => {
 
 const id = (v) => v 
 
+const objectValues = obj => Object.keys(obj).map(key => obj[key]);
+
 const unique = (values,extractor=id) => objectValues(values.reduce((acc,b) => {
       acc[extractor(b)] = b; 
       return acc;
