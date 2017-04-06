@@ -17,7 +17,7 @@ const reverse = list => {
 }
 
 const longestString = list => {
-	return list.reduce((acc,v) => acc.length>v.length?acc:v); 
+	return list.reduce((acc,v) => acc.length>v.length?acc:v, ''); 
 }
 
 const sortString = s => {
@@ -27,11 +27,6 @@ const sortString = s => {
 const id = (v) => v 
 
 const objectValues = obj => Object.keys(obj).map(key => obj[key]);
-
-const unique = (values,extractor=id) => objectValues(values.reduce((acc,b) => {
-      acc[extractor(b)] = b; 
-      return acc;
-    },{}));
 	
 const groupBy = (values,extractor=id) => values.reduce((acc,b) => {
       acc[extractor(b)] = acc[extractor(b)]?[b].concat(acc[extractor(b)]):[b]; 
