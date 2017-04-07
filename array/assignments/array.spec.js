@@ -389,7 +389,9 @@ describe('array', function () {
 				return v < 10;
 			}).first()
 			.subscribe(x => console.log(x));
+			
 		*/
+		
     });		
 	
 	/**************Assignments**********************/
@@ -489,6 +491,15 @@ describe('array', function () {
 		//const anagrams = objectValues(groupBy(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'], v => sortString(v))).filter(v => v.length > 1);
 		//const expected = [['Dreads', 'Sadder'], ['Reactive', 'Creative']];
 		//expect(anagrams).toEqual(expected);
+	});		
+	
+	
+	it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be ['Creative', 'Reactive']", function(){
+		Rx.Observable.from(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'])
+			.groupBy(word => word.toLowerCase().split("").sort().join(""))
+			.flatMap(group => group.reduce((acc, curr) => acc.concat([curr]), []))
+			.filter(group => group.length > 1)
+			.subscribe(x => console.log(x));
 	});		
 	
 });
