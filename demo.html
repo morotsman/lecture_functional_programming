@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Demo</title>
+
+
+    <!--App lib BEGIN-->
+	<script type="text/javascript" src="lib/L/L.js"></script>
+    <!--App lib END-->
+
+   
+
+</head>
+<body>
+    <a id="link">Click on me</a>
+
+</body>
+
+<script>
+    
+    //document.getElementById('link').onclick = function(e){
+    //    alert('click');
+    //}
+    
+    //const events = L.fromEvent('link', 'click'); 
+    //for(var i = 0; i < 10; i++) {
+    //    console.log(events.next());
+    //}
+    /*
+    function* callee() {
+        console.log("In target");
+        console.log(yield);
+        console.log("End target");
+    }
+            
+    function* caller() {
+        while(true) {
+            yield* callee()
+        }  
+    }
+            
+    const callerObject = caller();
+    
+    callerObject.next();
+    callerObject.next('a');
+    
+    document.getElementById('link').onclick = function(e){
+        callerObject.next('click');
+    }
+    */
+ 
+   const values = L.fromEvent()();
+   for (let value of values) {
+        console.log("result1: " + value);
+   }
+   
+   
+    
+</script>
+</html>

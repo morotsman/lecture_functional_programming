@@ -230,14 +230,16 @@ describe('list', function () {
 		const expression = L.compose(L.take(3),L.map(L.times(2)), L.filter(isEven));
 		//const expression2 = L.compose(L.take(3),L.map(L.times(2)), L.filter(isEven));
 		
-		for (let value of expression([1,2,3,4,5,6,7,8,9,10])) {
-			console.log("result1: " + value);
-		}
-		console.log("******************");
+                const values = expression([1,2,3,4,5,6,7,8,9,10]);
+                
+                for(let i = 0; i < 10; i++) {
+                    console.log(values.next());
+                }
 		
-		for (let value of expression([1,2,3,4,5,6,7,8,9,10])) {
-			console.log("result2: " + value);
-		}
+                //for (let value of expression([1,2,3,4,5,6,7,8,9,10])) {
+		//	console.log("result1: " + value);
+		//}
+		
 		
 	});			
 	
