@@ -7,53 +7,72 @@
 
     <!--App lib BEGIN-->
 	<script type="text/javascript" src="lib/L/L.js"></script>
+        <script src="https://unpkg.com/rxjs/bundles/Rx.min.js"></script>
     <!--App lib END-->
 
    
 
 </head>
 <body>
-    <a id="link">Click on me</a>
+    
+    <div>
+        <input type="text" id="textInput"></input>
+        <button id="buttonInput">Add</button>
+    </div>
+    
+    
+    </br>
+    
+    <div>
+        <span>Anagrams</span>
+        <table id="output">
+            
+        </table>
+    </div>
+    
 
 </body>
 
 <script>
     
-    //document.getElementById('link').onclick = function(e){
-    //    alert('click');
-    //}
-    
-    //const events = L.fromEvent('link', 'click'); 
-    //for(var i = 0; i < 10; i++) {
-    //    console.log(events.next());
-    //}
-    /*
-    function* callee() {
-        console.log("In target");
-        console.log(yield);
-        console.log("End target");
+    const sortedString = string => string.split("").sort().join("")
+    const objectValues = obj => Object.keys(obj).map(key => obj[key]);
+    const removeChilds = element => {
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
     }
+    
+    const buttonSource = Rx.Observable
+            .fromEvent(document.getElementById("buttonInput"), 'click')
             
-    function* caller() {
-        while(true) {
-            yield* callee()
-        }  
-    }
+    const enterSource = Rx.Observable
+            .fromEvent(document.getElementById("textInput"), 'keydown')
+            .filter(key => key.code === "Enter");
+    
+    const source = Rx.Observable.merge(buttonSource,enterSource).map(event => document.getElementById("textInput").value);
+    
+    const anagrams = source
+            .distinct()
+            .scan((acc, cur) => {
+                const key = sortedString(cur);
+                acc[key] = acc[key]?acc[key].concat([cur]):[cur];
+                return acc;
+            }, {})
+            .map(group => objectValues(group).filter(words => words.length > 1))
+            .distinct(anagrams => anagrams.join(""))
             
-    const callerObject = caller();
-    
-    callerObject.next();
-    callerObject.next('a');
-    
-    document.getElementById('link').onclick = function(e){
-        callerObject.next('click');
-    }
-    */
- 
-   const values = L.fromEvent()();
-   for (let value of values) {
-        console.log("result1: " + value);
-   }
+            
+            
+    anagrams.subscribe(anagrams => {
+        console.log(anagrams);
+        const output = document.getElementById("output");
+        removeChilds(output)
+        anagrams.forEach(anagram => { 
+           output.insertAdjacentHTML('beforeend', "<tr>" + anagram + "</tr>"); 
+        })
+        
+    });
    
    
     
