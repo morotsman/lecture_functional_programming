@@ -487,11 +487,31 @@ describe('array', function () {
 	it("sort('dreads') should be 'adders'", function(){
 		expect(sortString('dreads')).toEqual('adders');
 	});	
+        
+       it("objectValues({}) should be []", function(){
+		expect(objectValues({})).toEqual([]);
+	});
+        
+        it("objectValues({a:'ada'}) should be ['ada','basic']", function(){
+		expect(objectValues({a:'ada', b:'basic'})).toEqual(['ada', 'basic']);
+	});
+        
+        it("objectValues({a:['ada', 'apa'], b: ['basic']}) should be [['ada','apa], ['basic']]", function(){
+		expect(objectValues({a:['ada','apa'], b:['basic']})).toEqual([['ada','apa'], ['basic']]);
+	});
 	
-	it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be ['Creative', 'Reactive']", function(){
-		const anagrams = objectValues(groupBy(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'], v => sortString(v))).filter(v => v.length > 1);
+	it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be [['Dreads', 'Sadder'], ['Reactive', 'Creative']]", function(){
+                const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
 		const expected = [['Dreads', 'Sadder'], ['Reactive', 'Creative']];
-		expect(anagrams).toEqual(expected);
-	});		
+		expect(anagrams(words)).toEqual(expected);
+	});
+        
+        //use lodash https://lodash.com/docs/4.17.4
+        it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be [['Sadder','Dreads'], ['Creative','Reactive']]", function(){
+                const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
+		const expected = [['Sadder','Dreads'], ['Creative','Reactive']];
+                const anagrams = _(words).groupBy(sortString).map(objectValues).filter(g => g.length > 1)
+		expect(anagrams.value()).toEqual(expected);
+	});
 	
 });

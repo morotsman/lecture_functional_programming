@@ -1,15 +1,15 @@
 
 
 const sum = list => {
-	
+
 }
 
 const length = list => {
-	
+    
 }
 
 const sumAllEvenNumbers = list => {
-	
+	return list.filter(v => v%2 === 0).reduce((acc,v) => acc + v, 0);
 }
 
 const reverse = list => {
@@ -26,10 +26,14 @@ const sortString = s => {
 
 const id = (v) => v 
 
-const objectValues = obj => Object.keys(obj).map(key => obj[key]);
+const objectValues = obj => {
+    
+}
 	
 const groupBy = (values,extractor=id) => {
-	
+    
 }
+    
+const anagrams = words => {}
     
 

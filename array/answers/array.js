@@ -31,6 +31,8 @@ const objectValues = obj => Object.keys(obj).map(key => obj[key]);
 const groupBy = (values,extractor=id) => values.reduce((acc,b) => {
       acc[extractor(b)] = acc[extractor(b)]?[b].concat(acc[extractor(b)]):[b]; 
       return acc;
-    },{})	
+    },{})
+    
+const anagrams = words => objectValues(groupBy(words, v => sortString(v))).filter(v => v.length > 1);
     
 
