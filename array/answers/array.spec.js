@@ -392,7 +392,25 @@ describe('array', function () {
                 console.log(result3);
 		
         		
-    });		    
+    });	
+    
+    
+        /*
+     * Other languages:
+     * 
+     * lisp: http://clhs.lisp.se/Body/17_a.htm
+     * haskell: https://hackage.haskell.org/package/base-4.9.1.0/docs/Data-List.html
+     * java: https://docs.oracle.com/javase/8/docs/api/java/util/stream/Stream.html
+     * scala: https://www.scala-lang.org/api/current/scala/collection/immutable/Vector.html
+     * ruby: https://ruby-doc.org/core-2.4.1/Enumerable.html
+     * lodash: https://lodash.com/docs/4.17.4
+     * rxjs: http://reactivex.io/rxjs/class/es6/Observable.js~Observable.html
+     * 
+     * scala: https://www.scala-lang.org/api/current/scala/concurrent/Future.html
+     * scala: https://www.scala-lang.org/api/current/scala/Option.html
+     * scala: http://www.scala-lang.org/api/2.12.x/scala/util/Try.html
+     * 
+     */
 	
 	
 	/**************Assignments**********************/
