@@ -341,10 +341,12 @@ describe('array', function () {
 	
 	/**************Good to know********************/
 	it("Good to know", function(){
+            
 		
 		console.log("*************functional**********************************");
 		const list = ["a","ab","abc","abcd", "abcde", "abcdef"];
 		
+                /*
 		const result1 = list.map(v => {
 			console.log("map1");
 			return v + v;
@@ -357,7 +359,7 @@ describe('array', function () {
 		})[0];
 
 		console.log(result1);
-		
+		*/
 		
 		console.log("*************imperative**********************************");
 		
@@ -370,28 +372,31 @@ describe('array', function () {
 				result2 = value;
 				break;
 			}
-		}*/
+		}
 		
-		//console.log(result1);
+		console.log(result2);
+            */
 		
 		console.log("*************better functional**********************************");
+                
+                /*
+                const result3 = _(list).map(v => {
+			console.log("map1");
+			return v + v;
+		}).map(v => {
+			console.log("map2");
+			return v.length;
+		}).filter(v => {
+			console.log("filter");
+			return v < 10;
+		}).first();
+                
+                console.log("-------");
+                
+                console.log(result3);
+            */
 		
-		/*
-		Rx.Observable.from(["a","ab","abc","abcd", "abcde", "abcdef"])
-			.map(v => {
-				console.log("map1");
-				return v + v;
-			}).map(v => {
-				console.log("map2");
-				return v.length;
-			}).filter(v => {
-				console.log("filter");
-				return v < 10;
-			}).first()
-			.subscribe(x => console.log(x));
-			
-		*/
-		
+        		
     });		
 	
 	/**************Assignments**********************/

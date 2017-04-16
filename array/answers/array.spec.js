@@ -336,7 +336,63 @@ describe('array', function () {
 		
         expect(actual).toEqual(5);
 		expect(list1).toEqual([5,1,2,3,4]);	
-    });		
+    });	
+    
+	/**************Good to know********************/
+	it("Good to know", function(){
+            
+		
+		console.log("*************functional**********************************");
+		const list = ["a","ab","abc","abcd", "abcde", "abcdef"];
+		
+		const result1 = list.map(v => {
+			console.log("map1");
+			return v + v;
+		}).map(v => {
+			console.log("map2");
+			return v.length;
+		}).filter(v => {
+			console.log("filter");
+			return v < 10;
+		})[0];
+
+		console.log(result1);
+		
+		
+		console.log("*************imperative**********************************");
+		
+		
+		let resul2;
+		for(let i = 0; i < list.length; i++) {
+			console.log("loop");
+			let value = (list[i] + list[i]).length;
+			if(value < 10) {
+				result2 = value;
+				break;
+			}
+		}
+		
+		console.log(result2);
+		
+		console.log("*************better functional**********************************");
+                
+                const result3 = _(list).map(v => {
+			console.log("map1");
+			return v + v;
+		}).map(v => {
+			console.log("map2");
+			return v.length;
+		}).filter(v => {
+			console.log("filter");
+			return v < 10;
+		}).first();
+                
+                console.log("-------");
+                
+                console.log(result3);
+		
+        		
+    });		    
 	
 	
 	/**************Assignments**********************/
