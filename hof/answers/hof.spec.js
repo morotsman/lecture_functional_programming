@@ -5,9 +5,9 @@ describe('array', function () {
 	
 
     const slowFibonacci = number => {
-	if(number === 1) return 0;
-	if(number === 2) return 1;
-	return slowFibonacci(number-1) + slowFibonacci(number-2)
+		if(number === 1) return 0;
+		if(number === 2) return 1;
+		return slowFibonacci(number-1) + slowFibonacci(number-2)
     };
     
     
@@ -205,7 +205,87 @@ describe('array', function () {
 
 	
 	
-    /**************Assignments**********************/
+    /**************Motivation**********************/
+	
+	
+	class LimitedResource {
+		
+		constructor() {
+			this.counter = 0;
+		}
+		
+		get getResource() {
+			if(this.counter === 0) {
+				this.counter++;
+				return "Safe"
+			}
+			throw "Resource depleted"
+		}
+		
+		get releaseResource() {
+			this.counter = 0;
+		}
+	}
+	
+	let resourceHolder = new LimitedResource();
+	
+	const resourceUser = () => {
+		let counter = 0;
+		return resource => {
+			if(counter === 0) {
+				counter++;
+			} else {
+				counter = 0;
+				throw "Ojsan, tänkte inte på det..."
+			}
+		} 
+	};
+	
+	it("test1", function(){
+		let resource = resourceHolder.getResource;
+		let userOfResource = resourceUser();
+		userOfResource(resource);
+		userOfResource(resource);
+		resourceHolder.releaseResource
+	});
+	
+	it("test2", function(){	
+		let resource = resourceHolder.getResource;
+		let userOfResource = resourceUser();
+		userOfResource(resource);
+		resourceHolder.releaseResource
+	});	
+	
+	class SafeLimitedResource {
+		constructor(limitedResource) {
+			this.limitedResource = limitedResource;
+		}
+		
+		useResource(fun){
+			try {
+				fun(this.limitedResource.getResource);	
+			} finally {
+				this.limitedResource.releaseResource;
+			}
+		}
+		
+	}
+	
+	const safeResourceHolder = new SafeLimitedResource(new LimitedResource());
+	
+	it("test3", function(){
+		let userOfResource = resourceUser();
+		safeResourceHolder.useResource(userOfResource)
+		safeResourceHolder.useResource(userOfResource)
+	});
+	
+	it("test4", function(){	
+		let userOfResource = resourceUser();
+		safeResourceHolder.useResource(userOfResource)
+	});	
+	
+	/*****Assignments********/
+	
 	
 	
 	
