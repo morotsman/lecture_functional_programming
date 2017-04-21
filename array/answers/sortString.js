@@ -1,3 +1,3 @@
-const sortString = s => s.toLowerCase().split("").sort().join("");
+const sortString = s => s.split("").sort().join("");
 
 

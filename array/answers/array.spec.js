@@ -505,16 +505,17 @@ describe('array', function () {
 	it("sort('dreads') should be 'adders'", function(){
 		expect(sortString('dreads')).toEqual('adders');
 	});	
+		
         
-       it("objectValues({}) should be []", function(){
+    it("objectValues({}) should be []", function(){
 		expect(objectValues({})).toEqual([]);
 	});
         
-        it("objectValues({a:'ada'}) should be ['ada','basic']", function(){
+    it("objectValues({a:'ada'}) should be ['ada','basic']", function(){
 		expect(objectValues({a:'ada', b:'basic'})).toEqual(['ada', 'basic']);
 	});
         
-        it("objectValues({a:['ada', 'apa'], b: ['basic']}) should be [['ada','apa], ['basic']]", function(){
+    it("objectValues({a:['ada', 'apa'], b: ['basic']}) should be [['ada','apa], ['basic']]", function(){
 		expect(objectValues({a:['ada','apa'], b:['basic']})).toEqual([['ada','apa'], ['basic']]);
 	});
 	
@@ -529,7 +530,7 @@ describe('array', function () {
         const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
 		const expected = [['Sadder','Dreads'], ['Creative','Reactive']];
         
-		const anagrams = _(words).groupBy(sortString).map(objectValues).filter(g => g.length > 1)
+		const anagrams = _(words).groupBy(word => sortString(word.toLowerCase())).map(_.values).filter(g => g.length > 1)
 		
 		expect(anagrams.value()).toEqual(expected);
 	});

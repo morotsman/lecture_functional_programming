@@ -1,3 +1,3 @@
-const anagrams = words => objectValues(groupBy(words, v => sortString(v))).filter(v => v.length > 1);
+const anagrams = words => objectValues(groupBy(words, word => sortString(word.toLowerCase()))).filter(v => v.length > 1);
     
 
