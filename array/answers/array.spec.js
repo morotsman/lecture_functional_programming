@@ -525,11 +525,48 @@ describe('array', function () {
 	});
         
         //use lodash https://lodash.com/docs/4.17.4
-        it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be [['Sadder','Dreads'], ['Creative','Reactive']]", function(){
-                const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
+    it("anagrams(['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop']) should be [['Sadder','Dreads'], ['Creative','Reactive']]", function(){
+        const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
 		const expected = [['Sadder','Dreads'], ['Creative','Reactive']];
-                const anagrams = _(words).groupBy(sortString).map(objectValues).filter(g => g.length > 1)
+        
+		const anagrams = _(words).groupBy(sortString).map(objectValues).filter(g => g.length > 1)
+		
 		expect(anagrams.value()).toEqual(expected);
 	});
+	
+	function imperativeAnagrams(list) {
+		if (list.length === 0) return list;
+		
+		let grouped = {};
+		for(var i = 0; i < list.length; i++) {
+			let word = list[i];
+			let sortedString = word.toLowerCase().split("").sort().join("");
+			grouped[sortedString] = grouped[sortedString]?grouped[sortedString].concat([word]):[word];
+		}
+		
+		let result = [];
+		Object.keys(grouped).forEach(key => {
+			if(grouped[key].length > 1) {
+				result.push(grouped[key])
+			}		
+		})
+		
+		return result;
+		
+	}
+	
+    it("imperativeAnagrams", function(){
+        const words = ['Sadder', 'Creative', 'Dreads', 'Reactive', 'abcdefghijklmnop'];
+		const expected = [['Sadder','Dreads'], ['Creative','Reactive']];
+       
+		
+		expect(imperativeAnagrams(words)).toEqual(expected);
+	});	
+	
+	
+	
+	
+	
+	
 	
 });

@@ -1,15 +1,16 @@
 
 
 const sum = list => {
-
+	return list.reduce((total,value) => total + value ,0);
 }
+
 
 const length = list => {
     
 }
 
 const sumAllEvenNumbers = list => {
-	return list.filter(v => v%2 === 0).reduce((acc,v) => acc + v, 0);
+	
 }
 
 const reverse = list => {

@@ -340,7 +340,7 @@ describe('array', function () {
     
 	/**************Good to know********************/
 	it("Good to know", function(){
-            
+           
 		
 		console.log("*************functional**********************************");
 		const list = ["a","ab","abc","abcd", "abcde", "abcdef"];
@@ -361,7 +361,7 @@ describe('array', function () {
 		
 		console.log("*************imperative**********************************");
 		
-		/*
+		
 		let resul2;
 		for(let i = 0; i < list.length; i++) {
 			console.log("loop");
@@ -373,12 +373,12 @@ describe('array', function () {
 		}
 		
 		console.log(result2);
-            */
+            
 		
 		console.log("*************better functional**********************************");
                 
-                /*
-                const result3 = _(list).map(v => {
+                
+        const result3 = _(list).map(v => {
 			console.log("map1");
 			return v + v;
 		}).map(v => {
@@ -392,7 +392,7 @@ describe('array', function () {
                 console.log("-------");
                 
                 console.log(result3);
-            */
+            
 		
         		
     });		
@@ -420,15 +420,15 @@ describe('array', function () {
 	//use reduce in all but sortString
 	
 	it("sum of [] should be 0", function(){
-		//expect(sum([])).toEqual(0);
+		expect(sum([])).toEqual(0);
 	});		
 	
 	it("sum of [2] should be 2", function(){
-		//expect(sum([2])).toEqual(2);
+		expect(sum([2])).toEqual(2);
 	});		
 	
 	it("sum of [1,2,3,4] should be 10", function(){
-		//expect(sum([1,2,3,4])).toEqual(10);
+		expect(sum([1,2,3,4])).toEqual(10);
 	});	
 	
 	it("length of [] should be 0", function(){
