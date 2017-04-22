@@ -1,0 +1,1 @@
+Lecture 1: Focus on funtional aspects of the array in javascript
