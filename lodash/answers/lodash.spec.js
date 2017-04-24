@@ -205,11 +205,12 @@ describe('lodash', function () {
         expect(_.toArray(actual)).toEqual(expected);
     });	
 
+	const parentOrChild = or(isChild,isParent);
 
 	//partition
     it("partion the persons in childs and parents", function(){
         const actual = _(persons)
-			.filter(or(isChild,isParent))
+			.filter(parentOrChild)
 			.partition(isParent)
 			.map(partition => partition.map(fullName))
 		
