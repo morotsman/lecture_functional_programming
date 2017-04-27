@@ -42,10 +42,10 @@ describe('lodash', function () {
     });
 
     it("get the first name of each person", function () {
-        const persons = [{firstName: "Kalle", lastName: "Anka"}, {
-            firstName: "Musse",
-            lastName: "Pigg"
-        }, {firstName: "Arne", lastName: "Anka"}];
+        const persons = [
+            {firstName: "Kalle", lastName: "Anka"},
+            {firstName: "Musse", lastName: "Pigg"},
+            {firstName: "Arne", lastName: "Anka"}];
 
         const actual = _(persons).map(person => person.firstName).value();
 
@@ -100,23 +100,27 @@ describe('lodash', function () {
 
     //hint: startsWith
     it("get the full name of all persons where the last name starts with A", function () {
-        const persons = [{firstName: "Kalle", lastName: "Anka"}, {
-            firstName: "Musse",
-            lastName: "Pigg"
-        }, {firstName: "Arne", lastName: "Anka"}];
+        const persons = [{firstName: "Kalle", lastName: "Anka"},
+            {firstName: "Musse", lastName: "Pigg"},
+            {firstName: "Arne", lastName: "Anka"}];
 
-        const actual = _(persons).filter(person => person.lastName.startsWith("A")).map(person => person.firstName + " " + person.lastName).value();
+        const actual = _(persons)
+            .filter(person => person.lastName.startsWith("A"))
+            .map(person => person.firstName + " " + person.lastName)
+            .value();
 
         expect(actual).toEqual(["Kalle Anka", "Arne Anka"]);
     });
 
     it("get the full name of all persons where the last name starts with E", function () {
-        const persons = [{firstName: "Kalle", lastName: "Anka"}, {
-            firstName: "Musse",
-            lastName: "Pigg"
-        }, {firstName: "Arne", lastName: "Anka"}];
+        const persons = [{firstName: "Kalle", lastName: "Anka"},
+            {firstName: "Musse", lastName: "Pigg"},
+            {firstName: "Arne", lastName: "Anka"}];
 
-        const actual = _(persons).filter(person => person.lastName.startsWith("E")).map(person => person.firstName + " " + person.lastName).value();
+        const actual = _(persons)
+            .filter(person => person.lastName.startsWith("E"))
+            .map(person => person.firstName + " " + person.lastName)
+            .value();
 
         expect(actual).toEqual([]);
     });
