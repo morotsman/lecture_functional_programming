@@ -1,4 +1,7 @@
-“Faultily faultless, icily regular, splendidly null, dead perfection; no more.”
+Perfectly beautiful: let it be granted her: where is the fault?
+All that I saw
+Faultily faultless, icily regular, splendidly null,
+Dead perfection, no more.
 ―Alfred Tennyson
 
 I call it my billion-dollar mistake. It was the invention of the null reference in 1965.
