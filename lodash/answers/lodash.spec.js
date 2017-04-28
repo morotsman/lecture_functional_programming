@@ -5,6 +5,84 @@ describe('lodash', function () {
     //Documentaion at: https://lodash.com/docs/4.17.4
 
 
+    const badGetFlowers = colorOfFlower => {
+        if(colorOfFlower === "red") {
+            return ['Roses', 'Tulips'];
+        }
+        return null;
+    };
+
+
+    it("imperative example with null instead of empty list", function () {
+        const flowers = badGetFlowers('red');//will not work with 'black'
+
+        var flowersThatStartsWithR = [];
+        for(var i = 0; i < flowers.length; i++) {
+            if(flowers[i].startsWith('R')){
+                flowersThatStartsWithR.push(flowers[i]);
+            }
+
+        }
+
+        expect(flowersThatStartsWithR).toEqual(['Roses']);
+    });
+
+
+    it("imperative example with null instead of empty list", function () {
+        const flowers = badGetFlowers('black');
+
+        var flowersThatStartsWithR = [];
+        if(flowers !== null) {
+            for(var i = 0; i < flowers.length; i++) {
+                if(flowers[i].startsWith('R')){
+                    flowersThatStartsWithR.push(flowers[i]);
+                }
+
+            }
+        }
+
+        expect(flowersThatStartsWithR).toEqual([]);
+    });
+
+
+    const goodGetFlowers = colorOfFlower => {
+        if(colorOfFlower === "red") {
+            return ['Roses', 'Tulips'];
+        }
+        return [];
+    };
+
+    it("imperative example with empty list instead of empty list", function () {
+        const flowers = goodGetFlowers('black');
+
+        var flowersThatStartsWithR = [];
+        for(var i = 0; i < flowers.length; i++) {
+            if(flowers[i].startsWith('R')){
+                flowersThatStartsWithR.push(flowers[i]);
+            }
+        }
+
+        expect(flowersThatStartsWithR).toEqual([]);
+    });
+
+    it("functional version", function () {
+        const flowers = goodGetFlowers('red');
+
+        const flowersThatStartsWithR = flowers.filter(flower => flower.startsWith('R'));
+
+        expect(flowersThatStartsWithR).toEqual(['Roses']);
+    });
+
+
+    it("functional version", function () {
+        const flowers = goodGetFlowers('black');
+
+        const flowersThatStartsWithR = flowers.filter(flower => flower.startsWith('R'));
+
+        expect(flowersThatStartsWithR).toEqual([]);
+    });
+
+
     /***********************************map***************************************/
 
     it("convert list of squares to triangles", function () {
