@@ -176,6 +176,8 @@ describe('lodash', function () {
     });
 
 
+    const startsWith = partOfString => word => word.startsWith(partOfString);
+
     //hint: startsWith
     it("get the full name of all persons where the last name starts with A", function () {
         const persons = [{firstName: "Kalle", lastName: "Anka"},
@@ -184,7 +186,7 @@ describe('lodash', function () {
 
         const actual = _(persons)
             .filter(person => person.lastName.startsWith("A"))
-            .map(person => person.firstName + " " + person.lastName)
+            .map(fullName)
             .value();
 
         expect(actual).toEqual(["Kalle Anka", "Arne Anka"]);
@@ -197,7 +199,7 @@ describe('lodash', function () {
 
         const actual = _(persons)
             .filter(person => person.lastName.startsWith("E"))
-            .map(person => person.firstName + " " + person.lastName)
+            .map(fullName)
             .value();
 
         expect(actual).toEqual([]);
